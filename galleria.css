@@ -7,7 +7,6 @@ body {
     background-image: url(gif.gif);
     background-size: auto;
     overflow-x: hidden;
-
 }
 
 h1 {
@@ -16,7 +15,7 @@ h1 {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr); /* Oletusarvoisesti 5 kuvaa per rivi */
     gap: 20px;
     justify-items: center;
     padding: 20px;
@@ -27,6 +26,7 @@ h1 {
     position: relative;
     overflow: hidden;
 }
+
 .gallery-item img {
     width: 100%;
     display: block;
@@ -49,15 +49,12 @@ p {
     font-family: cursive;
 }
 
-
-
-
 .gallery-item img:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-
+/* Lightbox */
 .lightbox {
     display: none;
     position: fixed;
@@ -95,3 +92,11 @@ p {
     background: #f44336;
     color: white;
 }
+
+/* Media Query for mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* Mobiilissa 2 kuvaa per rivi */
+    }
+}
+
