@@ -1,5 +1,3 @@
-// script.js
-
 // Lisää kaikki kuvat dynaamisesti galleriaan
 document.addEventListener("DOMContentLoaded", () => {
     const gallery = document.getElementById("gallery");
@@ -27,8 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
         caption.classList.add("caption");
         caption.textContent = `Kuva ${imageCounter}`;  // Käyttää järjestysnumeroa
 
+        // Luo tekstikenttä jokaiselle kuvalle
+        const textField = document.createElement("textarea");
+        textField.classList.add("text-field");
+        textField.placeholder = "Kirjoita tähän..."; // Tekstikentän ohjeteksti
+        textField.rows = 2; // Tekstikentän rivimäärä
+
+        // Lisää elementit galleriaan
         galleryItem.appendChild(img);
         galleryItem.appendChild(caption);
+        galleryItem.appendChild(textField); // Lisää tekstikenttä kuvan ja kuvatekstin alle
         gallery.appendChild(galleryItem);
 
         // Päivitetään järjestysnumero seuraavaa kuvaa varten
