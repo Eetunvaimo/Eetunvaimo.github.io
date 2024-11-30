@@ -5,6 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const imagePath = "drive-download-20241122T203915Z-001/"; // Kuvien polku
     let imageCounter = 1;  // Laskuri, joka seuraa näkyvien kuvien määrää
 
+    // Esiasetettujen tekstien taulukko
+    const imageTexts = {
+        1: "Tämä on ensimmäinen kuva",
+        2: "Toinen kuva ja sen erityinen teksti",
+        3: "Kolmas kuva tässä!",
+        // Lisää omat tekstisi tänne
+        // Esim: 4: "Kuva 4 oma teksti",
+    };
+
     for (let i = 1; i <= totalImages; i++) {
         // Skippaa kuvat, joiden tunnus on 100-199
         if (i >= 100 && i <= 199) {
@@ -25,16 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
         caption.classList.add("caption");
         caption.textContent = `Kuva ${imageCounter}`;  // Käyttää järjestysnumeroa
 
-        // Luo tekstikenttä jokaiselle kuvalle
-        const textField = document.createElement("textarea");
-        textField.classList.add("text-field");
-        textField.placeholder = "Kirjoita tähän..."; // Tekstikentän ohjeteksti
-        textField.rows = 2; // Tekstikentän rivimäärä
+        // Luo tekstielementti esiasetetulle tekstille
+        const customText = document.createElement("div");
+        customText.classList.add("custom-text");
+        customText.textContent = imageTexts[imageCounter] || ""; // Näytä esiasetettu teksti tai jätä tyhjäksi
 
         // Lisää elementit galleriaan
         galleryItem.appendChild(img);
         galleryItem.appendChild(caption);
-        galleryItem.appendChild(textField); // Lisää tekstikenttä kuvan ja kuvatekstin alle
+        galleryItem.appendChild(customText); // Lisää esiasetettu teksti kuvan alle
         gallery.appendChild(galleryItem);
 
         // Päivitetään järjestysnumero seuraavaa kuvaa varten
