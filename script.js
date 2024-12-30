@@ -1,13 +1,13 @@
-// Lisää kaikki kuvat dynaamisesti galleriaan
+
 document.addEventListener("DOMContentLoaded", () => {
     const gallery = document.getElementById("gallery");
-    const totalImages = 244; // Kuvien kokonaismäärä
-    const imagePath = "drive-download-20241122T203915Z-001/"; // Kuvien polku
-    let imageCounter = 1;  // Laskuri, joka seuraa näkyvien kuvien määrää
+    const totalImages = 243;
+    const imagePath = "drive-download-20241122T203915Z-001/";
+    let imageCounter = 1;
 
-    // Esiasetettujen tekstien taulukko
+
     const imageTexts = {
-        1: "EAN 6430082010972",
+        1: "EAN 6430082011535 ",
         2: "EAN 6430082010163",
         3: "EAN 6430082010965",
         4: "EAN 6430082010057",
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         78: "EAN 6430082011016",
         79: "EAN 643008201109",
         80: "EAN 6430082011054",
-        81: "",
+        81: "EAN 6430082010972",
         82: "EAN 6430082010996",
         83: "EAN 6430082010927",
         84: "EAN 6430082011047",
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         94: "EAN 6430082010941",
         95: "EAN 6430082011252",
         96: "EAN 6430082011238",
-        97: "",
+        97: "EAN 6430082011511",
         98: "EAN 6430082011337",
         99: "EAN 6430082010958",
         100: "EAN 6430082011382",
@@ -113,11 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
         104: "EAN 6430082011436",
         105: "EAN 6430082011474",
         106: "EAN 6430082011443",
-        107: "",
-        108: "",
-        109: "",
+        107: "EAN 6430082011481",
+        108: "EAN 7430082011504",
+        109: "EAN 6430082011498",
         110: "EAN 6430082010989",
-        111: "",
+        111: "EAN 6430082011528",
         112: "EAN 6430082010194",
         113: "EAN 6430082010040",
         114: "EAN 6430082010200",
@@ -153,42 +153,40 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     for (let i = 1; i <= totalImages; i++) {
-        // Skippaa kuvat, joiden tunnus on 100-199
+
         if (i >= 100 && i <= 199) {
             continue;
         }
 
-        // Luo uusi kuvaelementti
+
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
 
         const img = document.createElement("img");
         img.src = `${imagePath}${i}.jpg`;
         img.alt = `Kuva ${i}`;
-        img.loading = "lazy";  // Lazy loading -kuvat
+        img.loading = "lazy";
         img.onclick = () => openLightbox(img.src);
 
         const caption = document.createElement("div");
         caption.classList.add("caption");
-        caption.textContent = `Kuva ${imageCounter}`;  // Käyttää järjestysnumeroa
+        caption.textContent = `Kuva ${imageCounter}`;
 
-        // Luo tekstielementti esiasetetulle tekstille
         const customText = document.createElement("div");
         customText.classList.add("custom-text");
-        customText.textContent = imageTexts[imageCounter] || ""; // Näytä esiasetettu teksti tai jätä tyhjäksi
+        customText.textContent = imageTexts[imageCounter] || "";
 
-        // Lisää elementit galleriaan
+
         galleryItem.appendChild(img);
         galleryItem.appendChild(caption);
-        galleryItem.appendChild(customText); // Lisää esiasetettu teksti kuvan alle
+        galleryItem.appendChild(customText); 
         gallery.appendChild(galleryItem);
 
-        // Päivitetään järjestysnumero seuraavaa kuvaa varten
         imageCounter++;
     }
 });
 
-// Lightbox-funktiot
+
 function openLightbox(src) {
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
